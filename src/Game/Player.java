@@ -5,7 +5,7 @@ import Strategies.IStrategy;
 public class Player {
     
     private int PScore = 0;
-    private boolean LastMove = true;
+    private boolean LastMove = false;
     private final IStrategy Strategy;
 
     protected Player(IStrategy Strategy) {

@@ -10,5 +10,10 @@ public class Defector implements IStrategy {
     public boolean chooseStrategy(Player p) {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Defector"; 
+    }
     
 }

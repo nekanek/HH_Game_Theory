@@ -10,5 +10,10 @@ public class TitForTat implements IStrategy {
     public boolean chooseStrategy(Player opponent) {
         return opponent.getLastMove(); 
     }
+
+    @Override
+    public String toString() {
+        return "Tit-for-Tat"; 
+    }
     
 }
