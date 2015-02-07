@@ -10,5 +10,10 @@ public class Cooperator implements IStrategy {
     public boolean chooseStrategy(Player p) {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Cooperator";
+    }
     
 }
