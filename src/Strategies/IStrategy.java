@@ -2,8 +2,34 @@ package Strategies;
 
 import Game.Player;
 
-public interface IStrategy {
-    public boolean chooseStrategy (Player p) ;
-        // returns true for cooperation
+public abstract class IStrategy {
+    public abstract boolean chooseStrategy(Player opponent, boolean information);
+            // returns true for cooperation
         //         false for defection
+    
+    public static boolean makeRandomMove() {
+        return Math.random() < 0.5;
+    }
+    
+    public boolean isCooperator() {
+        return false;
+    }
+    public boolean isDefector() {
+        return false;
+    }
+    public boolean isTitForTat() {
+        return false;
+    }
+    public boolean isTitForTatForgiver() {
+        return false;
+    }
+    public boolean isLess() {
+        return false;
+    }
+    public boolean isRandom() {
+        return false;
+    }
+    public boolean isAvg85() {
+        return false;
+    }
 }

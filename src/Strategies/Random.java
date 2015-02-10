@@ -4,21 +4,20 @@ package Strategies;
 import Game.Player;
 
 
-public class TitForTat extends IStrategy {
+public class Random extends IStrategy {
+
     @Override
     public String toString() {
-        return "Tit-for-Tat"; 
+        return "Pure random"; 
     }
 
     @Override
     public boolean chooseStrategy(Player opponent, boolean information) {
-        if (information) return opponent.getLastMove(); 
-        else return IStrategy.makeRandomMove();
-    }
-
-    @Override
-    public boolean isTitForTat() {
-        return true;
+        return IStrategy.makeRandomMove();
     }
     
+    @Override
+    public boolean isRandom() {
+        return true;
+    }    
 }
