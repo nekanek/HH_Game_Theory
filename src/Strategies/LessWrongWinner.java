@@ -8,9 +8,9 @@ import Game.Player;
 public class LessWrongWinner extends IStrategy {
 
     @Override
-    public boolean chooseStrategy(Player opponent, boolean information) {
+    public boolean chooseStrategy(Player me, Player opponent, boolean information) {
         if (!information) return IStrategy.makeRandomMove();
-        else if (!opponent.getLast7Moves()) return false;
+        else if (opponent.getLast7Moves()) return false;
         else return opponent.getLastMove();
     }
 

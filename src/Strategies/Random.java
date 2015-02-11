@@ -12,7 +12,7 @@ public class Random extends IStrategy {
     }
 
     @Override
-    public boolean chooseStrategy(Player opponent, boolean information) {
+    public boolean chooseStrategy(Player me, Player opponent, boolean information) {
         return IStrategy.makeRandomMove();
     }
     

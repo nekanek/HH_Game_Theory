@@ -8,11 +8,12 @@ public class Player {
     private ArrayList<Integer> pScore;
     private ArrayList<Boolean> movesHistory;
     private int histCoop = 0;
+    private int totalPScore = 0;
     
     private final IStrategy strategy;
 
     protected Player(IStrategy strategy) {
-        this(strategy, true);
+        this(strategy, (Math.random() < 0.5));
     }
 
     protected Player(IStrategy strategy, boolean lastMove) {
@@ -32,6 +33,11 @@ public class Player {
     
     protected void addPScore(int pScore) {
         this.pScore.add(pScore);
+        this.totalPScore += pScore;
+    }
+
+    public int getTotalPScore() {
+        return totalPScore;
     }
     
     protected void setLastMove(boolean lastMove) {
@@ -44,17 +50,32 @@ public class Player {
     }
     
     public boolean getLast7Moves() {
-        if (movesHistory.size() < 7) return true;
+        return isLastNMovesFalse(7);
+    }
+    
+    public boolean isLastNMovesFalse(int n) {
+//        if (movesHistory.size() < n) return true;
         boolean result = false;
         for (int i = movesHistory.size() - 1; i >= 0; i--) 
-            if (result || movesHistory.get(i)) return true;
-        return result;
-    }
- 
-    public boolean get85percentMoves() {
-        if (movesHistory.size() == 1) return movesHistory.get(0);
-        else return (histCoop/(movesHistory.size()-1) > 0.85);
+            if (result || movesHistory.get(i)) return false;
+        return true;
     }    
+    
+    public boolean isLastNMovesTrue(int n) {
+//        if (movesHistory.size() < n) return true;
+        boolean result = true;
+        for (int i = movesHistory.size() - 1; i >= 0; i--) 
+            if (!(result && movesHistory.get(i))) return false;
+        return true;
+    }        
+    public boolean get85percentMoves() {
+        return getNpercentMoves(0.85);
+    }    
+    
+    public boolean getNpercentMoves(double n) {
+        if (movesHistory.size() == 1) return movesHistory.get(0);
+        else return (histCoop/(movesHistory.size()-1) > n);
+    }
     
     protected IStrategy getStrategy() {
         return strategy;

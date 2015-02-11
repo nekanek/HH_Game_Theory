@@ -4,20 +4,22 @@ package Strategies;
 import Game.Player;
 
 
-public class TitForTat extends IStrategy {
+public class LongMemory extends IStrategy {
     @Override
     public String toString() {
-        return "Tit-for-Tat"; 
+        return "QuickLearner"; 
     }
 
     @Override
     public boolean chooseStrategy(Player me, Player opponent, boolean information) {
-        if (information) return opponent.getLastMove(); 
-        else return IStrategy.makeRandomMove();
+        if (information) 
+            return opponent.isLastNMovesTrue(3); 
+        else
+            return IStrategy.makeRandomMove();
     }
 
     @Override
-    public boolean isTitForTat() {
+    public boolean isLongMemory() {
         return true;
     }
     

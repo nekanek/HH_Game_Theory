@@ -3,7 +3,7 @@ package Strategies;
 import Game.Player;
 
 public abstract class IStrategy {
-    public abstract boolean chooseStrategy(Player opponent, boolean information);
+    public abstract boolean chooseStrategy(Player me, Player opponent, boolean information);
             // returns true for cooperation
         //         false for defection
     
@@ -32,4 +32,14 @@ public abstract class IStrategy {
     public boolean isAvg85() {
         return false;
     }
+    public boolean isLongMemory() {
+        return false;
+    }
+    public boolean isComparator() {
+        return false;
+    }
+    public boolean isAvg50() {
+        return false;
+    }
+
 }

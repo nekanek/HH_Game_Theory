@@ -12,7 +12,7 @@ public class Defector extends IStrategy {
     }
 
     @Override
-    public boolean chooseStrategy(Player p2, boolean information) {
+    public boolean chooseStrategy(Player me, Player p2, boolean information) {
         return false;
     }
     

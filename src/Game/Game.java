@@ -1,6 +1,5 @@
 package Game;
 
-import Strategies.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -31,7 +30,7 @@ public class Game {
         this.DC_SCORE = DC_SCORE;
         this.DD_SCORE = DD_SCORE;
         this.information = information;
-        System.out.println("players" + players.toString());
+//        System.out.println("players" + players.toString());
     }
 
 
@@ -66,8 +65,9 @@ public class Game {
     }
     
     private void playInteraction (Player p1, Player p2) {
-        boolean s1 = p1.getStrategy().chooseStrategy(p2, this.information);
-        boolean s2 = p2.getStrategy().chooseStrategy(p1, this.information);
+        boolean s1, s2;
+        s1 = p1.getStrategy().chooseStrategy(p1, p2, this.information);
+        s2 = p2.getStrategy().chooseStrategy(p2, p1, this.information);
         p1.setLastMove(s1);
         p2.setLastMove(s2);
         if (s1 && s2) {

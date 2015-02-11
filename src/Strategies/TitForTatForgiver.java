@@ -14,7 +14,7 @@ public class TitForTatForgiver extends IStrategy {
     }
 
     @Override
-    public boolean chooseStrategy(Player opponent, boolean information) {
+    public boolean chooseStrategy(Player me, Player opponent, boolean information) {
         if (!information) return IStrategy.makeRandomMove();
         if (!opponent.getLastMove()) return (forgivenessChance > Math.random());
         else return true;
