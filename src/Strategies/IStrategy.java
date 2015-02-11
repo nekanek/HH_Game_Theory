@@ -41,5 +41,8 @@ public abstract class IStrategy {
     public boolean isAvg50() {
         return false;
     }
+    public boolean isAntiTFT() {
+        return false;
+    }
 
 }

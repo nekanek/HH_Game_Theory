@@ -54,7 +54,6 @@ public class Player {
     }
     
     public boolean isLastNMovesFalse(int n) {
-//        if (movesHistory.size() < n) return true;
         boolean result = false;
         for (int i = movesHistory.size() - 1; i >= 0; i--) 
             if (result || movesHistory.get(i)) return false;
@@ -62,7 +61,6 @@ public class Player {
     }    
     
     public boolean isLastNMovesTrue(int n) {
-//        if (movesHistory.size() < n) return true;
         boolean result = true;
         for (int i = movesHistory.size() - 1; i >= 0; i--) 
             if (!(result && movesHistory.get(i))) return false;

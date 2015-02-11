@@ -72,30 +72,30 @@ public class Game {
         p2.setLastMove(s2);
         if (s1 && s2) {
             p1.addPScore(CC_SCORE);
-            addScore(p1, CC_SCORE);
+//            addScore(p1, CC_SCORE);
             p2.addPScore(CC_SCORE);
-            addScore(p2, CC_SCORE);
+//            addScore(p2, CC_SCORE);
             scoreHistory.set(scoreHistory.size()-1, currScore() + CC_SCORE * 2);
         }
         else if (s1) {
             p1.addPScore(CD_SCORE);
-            addScore(p1, CD_SCORE);
+//            addScore(p1, CD_SCORE);
             p2.addPScore(DC_SCORE);
-            addScore(p2, DC_SCORE);
+//            addScore(p2, DC_SCORE);
             scoreHistory.set(scoreHistory.size()-1, currScore() + CD_SCORE + DC_SCORE);
         }
         else if (s2) {
             p1.addPScore(DC_SCORE);
-            addScore(p1, DC_SCORE);
+//            addScore(p1, DC_SCORE);
             p2.addPScore(CD_SCORE);
-            addScore(p2, CD_SCORE);
+//            addScore(p2, CD_SCORE);
             scoreHistory.set(scoreHistory.size()-1, currScore() + CD_SCORE + DC_SCORE);            
         }
         else {
             p1.addPScore(DD_SCORE);
-            addScore(p1, DD_SCORE);
+//            addScore(p1, DD_SCORE);
             p2.addPScore(DD_SCORE);
-            addScore(p2, DD_SCORE);
+//            addScore(p2, DD_SCORE);
             scoreHistory.set(scoreHistory.size()-1, currScore() + DD_SCORE * 2);            
         }        
     }
