@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class Player {
     
-    private ArrayList<Integer> pScore;
-    private ArrayList<Boolean> movesHistory;
+    private final ArrayList<Integer> pScore;
+    private final ArrayList<Boolean> movesHistory;
     private int histCoop = 0;
     private int totalPScore = 0;
     
@@ -23,11 +23,11 @@ public class Player {
         this.movesHistory.add(lastMove);
     }
     
-    public int getPScore() {
+    private int getPScore() {
         return pScore.get(pScore.size()-1);
     }
 
-    public ArrayList<Integer> getPScoreHistory() {
+    private ArrayList<Integer> getPScoreHistory() {
         return pScore;
     }
     
@@ -49,10 +49,6 @@ public class Player {
         return movesHistory.get(movesHistory.size()-1);
     }
     
-    public boolean getLast7Moves() {
-        return isLastNMovesFalse(7);
-    }
-    
     public boolean isLastNMovesFalse(int n) {
         boolean result = false;
         for (int i = movesHistory.size() - 1; i >= 0; i--) 
@@ -65,7 +61,8 @@ public class Player {
         for (int i = movesHistory.size() - 1; i >= 0; i--) 
             if (!(result && movesHistory.get(i))) return false;
         return true;
-    }        
+    }       
+    
     public boolean get85percentMoves() {
         return getNpercentMoves(0.85);
     }    

@@ -5,24 +5,24 @@ import java.util.Collections;
 
 public class Game {
     
-    ArrayList<Player> players;
-    final int gameLength;
-    final boolean information;
-    final int ccScore;
-    final int cdScore;
-    final int dcScore;
-    final int ddScore;
-    ArrayList<Integer> scoreHistory = new ArrayList<>();
+    private ArrayList<Player> players;
+    private final int gameLength;
+    private final boolean information;
+    private final int ccScore;
+    private final int cdScore;
+    private final int dcScore;
+    private final int ddScore;
+    private final ArrayList<Integer> scoreHistory = new ArrayList<>();
     
-    final static int CC_SCORE_DEFAULT = 10;
-    final static int CD_SCORE_DEFAULT = -10;
-    final static int DC_SCORE_DEFAULT = 20;
-    final static int DD_SCORE_DEFAULT = 0;
-    final static int GAME_LENGTH_DEFAULT = 50;
-    final static boolean INFO_DEFAULT = true;    
+    private final static int CC_SCORE_DEFAULT = 10;
+    private final static int CD_SCORE_DEFAULT = -10;
+    private final static int DC_SCORE_DEFAULT = 20;
+    private final static int DD_SCORE_DEFAULT = 0;
+    private final static int GAME_LENGTH_DEFAULT = 50;
+    private final static boolean INFO_DEFAULT = true;    
     
     
-    public Game(ArrayList<Player> players, int gameLength, int CC_SCORE, int CD_SCORE, int DC_SCORE, int DD_SCORE, boolean information) {
+    protected Game(ArrayList<Player> players, int gameLength, int CC_SCORE, int CD_SCORE, int DC_SCORE, int DD_SCORE, boolean information) {
         this.players = players;
         this.gameLength = gameLength;
         this.ccScore = CC_SCORE;
@@ -32,15 +32,15 @@ public class Game {
         this.information = information;
     }
 
-    public Game(ArrayList<Player> players, int gameLength) {
+    protected Game(ArrayList<Player> players, int gameLength) {
         this(players, gameLength, CC_SCORE_DEFAULT, CD_SCORE_DEFAULT, DC_SCORE_DEFAULT, DD_SCORE_DEFAULT, INFO_DEFAULT);
     }    
 
-    public Game(ArrayList<Player> players, boolean information) {
+    protected Game(ArrayList<Player> players, boolean information) {
         this(players, GAME_LENGTH_DEFAULT, CC_SCORE_DEFAULT, CD_SCORE_DEFAULT, DC_SCORE_DEFAULT, DD_SCORE_DEFAULT, information);
     }    
     
-    public Game(ArrayList<Player> players) {
+    protected Game(ArrayList<Player> players) {
         this(players, INFO_DEFAULT);
     }    
     

@@ -4,17 +4,17 @@
 package Strategies;
 
 import Game.Player;
-import java.util.ArrayList;
+import java.util.HashSet;
 
 public class LessWrongWinner extends IStrategy {
     
-    private final ArrayList<Player> blackList = new ArrayList<>();
+    private final HashSet<Player> blackList = new HashSet<>();
     
     @Override
     public boolean chooseStrategy(Player me, Player opponent, boolean information) {
         if (!information) return IStrategy.makeRandomMove();
         if (blackList.contains(opponent)) return false;
-        else if (opponent.getLast7Moves()) {
+        else if (opponent.isLastNMovesFalse(7)) {
             blackList.add(opponent);
             return false;
         }
