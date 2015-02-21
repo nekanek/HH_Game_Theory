@@ -4,12 +4,9 @@ import Strategies.*;
 import java.util.ArrayList;
 
 
-public class Main {
+public class Main {    
 
     public static void main(String[] args) {
-//        ArrayList<Player> players = demoPlayers();
-//        Game myGame = new Game(players, 100, 10, -10, 20, 0, true);
-//        myGame.play();
         startGame("Coopers", 1, 5, 3, 
                              0, 1, 0, 
                              0, 0, 0, 0, 0);
@@ -27,8 +24,6 @@ public class Main {
         startGame("Balanced", 1, 1, 2, 
                              2, 1, 1, 
                              2, 0, 0, 0, 0);  
-        
-        
         startGame("Pure Def", 10, 0, 0,  0, 0, 0,  0, 0, 0, 0, 0);
         startGame("Pure Coop", 0, 10, 0,  0, 0, 0,  0, 0, 0, 0, 0);
         startGame("Pure Tit", 0, 0, 10,  0, 0, 0,  0, 0, 0, 0, 0);
@@ -39,19 +34,18 @@ public class Main {
         startGame("Pure long mem", 0, 0, 0,  0, 0, 0,  0, 10, 0, 0, 0);
         startGame("Pure comparators", 0, 0, 0,  0, 0, 0,  0, 0, 10, 0, 0);
         startGame("Pure avg50", 0, 0, 0,  0, 0, 0,  0, 0, 0, 10, 0);
-        
         startGame("coops and long mem", 0, 8, 0,  0, 0, 0,  0, 2, 0, 0, 0);
         startGame("comps and less and long mem", 0, 0, 0,  0, 0, 3,  0, 4, 3, 0, 0);
-        
         startGame("Anti TFT and TFT", 0, 0, 9,  0, 0, 0,  0, 0, 0, 0, 1);
     }
     
     private static void startGame(String label, int def, int coop, int tit, int ran, int titF, int less, int avg85, int lm, int cmp, int avg50, int antiTFT) {
         System.out.println(label);
         ArrayList<Player> team = createPlayers(def, coop, tit, 
-                             ran, titF, less, 
-                             avg85, lm, cmp, avg50, antiTFT);  
-        Game myGame = new Game(team, 50, 10, -10, 20, 0, true);
+                                               ran, titF, less, 
+                                               avg85, lm, cmp, 
+                                               avg50, antiTFT);  
+        Game myGame = new Game(team, true);
         myGame.play();  
         System.out.println("");
     }
@@ -71,36 +65,7 @@ public class Main {
             if (avg50-- > 0) players.add(new Player(new Averager50()));
             if (antiTFT-- > 0) players.add(new Player(new AntiTFT()));
         }
-//        for (int i = 0; i < 100; i++) {
-//            Player p = new Player(new Cooperator());
-//            players.add(p);
-//        }
-//        for (int i = 0; i < 100; i++) {
-//            Player p = new Player(new Defector());
-//            players.add(p);
-//        }
-//        for (int i = 0; i < 100; i++) {
-//            Player p = new Player(new TitForTat());
-//            players.add(p);
         return players;
     }
 
-    private static ArrayList<Player> demoPlayers () {
-        int def = 15;
-        int coop = 15; 
-        int tit = 30;
-        int ran = 0;
-        int titF = 10;
-        int less =10;
-        int avg85 = 10;
-        int lm = 5;
-        return createPlayers(def, coop, tit, 
-                             ran, titF, less, 
-                             avg85, lm, 0, 0, 0);        
-//        int same = 30;
-//        return createPlayers(same, same, same, 
-//                             same, same, same, 
-//                             same);
-
-    }
 }
