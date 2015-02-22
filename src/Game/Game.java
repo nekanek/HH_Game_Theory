@@ -92,11 +92,7 @@ public class Game {
     }
 
     private void printResults() {
-        int sumScore = 0;
-        for (int i : scoreHistory) {
-            sumScore += i;
-        }
-        System.out.println("Overall Game score: " + sumScore);        
+        System.out.println("Overall Game score: " + gameScore());        
         System.out.println("Score history: ");
         System.out.println(scoreHistory.toString());
     }
@@ -105,4 +101,11 @@ public class Game {
         return scoreHistory.get(scoreHistory.size()-1);
     }
     
+    protected int gameScore() {
+        int sumScore = 0;
+        for (int i : scoreHistory) {
+            sumScore += i;
+        }
+        return sumScore;
+    }
 }

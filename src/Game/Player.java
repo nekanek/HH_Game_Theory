@@ -1,6 +1,7 @@
 package Game;
 
 import Strategies.IStrategy;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class Player {
@@ -12,20 +13,21 @@ public class Player {
     
     private final IStrategy strategy;
 
-    protected Player(IStrategy strategy) {
+    public Player(IStrategy strategy) {
         this(strategy, (Math.random() < 0.5));
     }
 
-    protected Player(IStrategy strategy, boolean lastMove) {
+    private Player(IStrategy strategy, boolean lastMove) {
         this.movesHistory = new ArrayList<>();
         this.pScore = new ArrayList<>();
         this.strategy = strategy;
         this.movesHistory.add(lastMove);
+        if (lastMove) histCoop++;
     }
     
-    private int getPScore() {
-        return pScore.get(pScore.size()-1);
-    }
+//    private int getPScore() {
+//        return pScore.get(pScore.size()-1);
+//    }
 
     private ArrayList<Integer> getPScoreHistory() {
         return pScore;
@@ -51,25 +53,22 @@ public class Player {
     
     public boolean isLastNMovesFalse(int n) {
         boolean result = false;
-        for (int i = movesHistory.size() - 1; i >= 0; i--) 
+        for (int i = movesHistory.size() - 1; i >= 0 && i >= movesHistory.size() - n; i--) 
             if (result || movesHistory.get(i)) return false;
         return true;
     }    
     
     public boolean isLastNMovesTrue(int n) {
         boolean result = true;
-        for (int i = movesHistory.size() - 1; i >= 0; i--) 
+        for (int i = movesHistory.size() - 1; i >= 0 && i >= movesHistory.size() - n; i--) 
             if (!(result && movesHistory.get(i))) return false;
         return true;
     }       
     
-    public boolean get85percentMoves() {
-        return getNpercentMoves(0.85);
-    }    
-    
     public boolean getNpercentMoves(double n) {
-        if (movesHistory.size() == 1) return movesHistory.get(0);
-        else return (histCoop/(movesHistory.size()-1) > n);
+        double percent = ((double)histCoop/(movesHistory.size()));
+        return Double.compare(percent, n) >= 0;
+       
     }
     
     protected IStrategy getStrategy() {

@@ -7,7 +7,7 @@ import Game.Player;
 public class Comparator extends IStrategy {
     @Override
     public String toString() {
-        return "Tit-for-Tat"; 
+        return "Comparator"; 
     }
 
     @Override

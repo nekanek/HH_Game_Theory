@@ -14,7 +14,7 @@ public class Averager85 extends IStrategy {
     @Override
     public boolean chooseStrategy(Player me, Player opponent, boolean information) {
         if (!information) return IStrategy.makeRandomMove();
-        return opponent.get85percentMoves();
+        return opponent.getNpercentMoves(0.85);
     }
     
     @Override

@@ -7,7 +7,7 @@ import Game.Player;
 public class LongMemory extends IStrategy {
     @Override
     public String toString() {
-        return "QuickLearner"; 
+        return "Long Memory"; 
     }
 
     @Override

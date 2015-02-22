@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;HH_Game_Theory&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Game</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package Game;
+
+import Strategies.*;
+import java.util.ArrayList;
+
+
+<span class="nc" id="L7">public class Main {    </span>
+
+    public static void main(String[] args) {
+<span class="fc" id="L10">        startGame(&quot;Coopers&quot;, 1, 5, 3, </span>
+                             0, 1, 0, 
+                             0, 0, 0, 0, 0);
+        
+<span class="fc" id="L14">        startGame(&quot;Titers&quot;, 1, 0, 6, </span>
+                             0, 3, 0, 
+                             0, 0, 0, 0, 0);
+        
+<span class="fc" id="L18">        startGame(&quot;Rationals&quot;, 0, 0, 3, </span>
+                             0, 3, 2, 
+                             2, 0, 0, 0, 0);  
+        
+<span class="fc" id="L22">        startGame(&quot;Ignorants&quot;, 0, 0, 0,  10, 0, 0,  0, 0, 0, 0, 0);</span>
+        
+<span class="fc" id="L24">        startGame(&quot;Balanced&quot;, 1, 1, 2, </span>
+                             2, 1, 1, 
+                             2, 0, 0, 0, 0);  
+<span class="fc" id="L27">        startGame(&quot;Pure Def&quot;, 10, 0, 0,  0, 0, 0,  0, 0, 0, 0, 0);</span>
+<span class="fc" id="L28">        startGame(&quot;Pure Coop&quot;, 0, 10, 0,  0, 0, 0,  0, 0, 0, 0, 0);</span>
+<span class="fc" id="L29">        startGame(&quot;Pure Tit&quot;, 0, 0, 10,  0, 0, 0,  0, 0, 0, 0, 0);</span>
+<span class="fc" id="L30">        startGame(&quot;Pure Rand&quot;, 0, 0, 0,  10, 0, 0,  0, 0, 0, 0, 0);</span>
+<span class="fc" id="L31">        startGame(&quot;Pure Tit forgiving&quot;, 0, 0, 0,  0, 10, 0,  0, 0, 0, 0, 0);</span>
+<span class="fc" id="L32">        startGame(&quot;Pure Less&quot;, 0, 0, 0,  0, 0, 10,  0, 0, 0, 0, 0);</span>
+<span class="fc" id="L33">        startGame(&quot;Pure avg85&quot;, 0, 0, 0,  0, 0, 0,  10, 0, 0, 0, 0);</span>
+<span class="fc" id="L34">        startGame(&quot;Pure long mem&quot;, 0, 0, 0,  0, 0, 0,  0, 10, 0, 0, 0);</span>
+<span class="fc" id="L35">        startGame(&quot;Pure comparators&quot;, 0, 0, 0,  0, 0, 0,  0, 0, 10, 0, 0);</span>
+<span class="fc" id="L36">        startGame(&quot;Pure avg50&quot;, 0, 0, 0,  0, 0, 0,  0, 0, 0, 10, 0);</span>
+<span class="fc" id="L37">        startGame(&quot;coops and long mem&quot;, 0, 8, 0,  0, 0, 0,  0, 2, 0, 0, 0);</span>
+<span class="fc" id="L38">        startGame(&quot;comps and less and long mem&quot;, 0, 0, 0,  0, 0, 3,  0, 4, 3, 0, 0);</span>
+<span class="fc" id="L39">        startGame(&quot;Anti TFT and TFT&quot;, 0, 0, 9,  0, 0, 0,  0, 0, 0, 0, 1);</span>
+<span class="fc" id="L40">    }</span>
+    
+    private static void startGame(String label, int def, int coop, int tit, int ran, int titF, int less, int avg85, int lm, int cmp, int avg50, int antiTFT) {
+<span class="fc" id="L43">        System.out.println(label);</span>
+<span class="fc" id="L44">        ArrayList&lt;Player&gt; team = createPlayers(def, coop, tit, </span>
+                                               ran, titF, less, 
+                                               avg85, lm, cmp, 
+                                               avg50, antiTFT);  
+<span class="fc" id="L48">        Game myGame = new Game(team, true);</span>
+<span class="fc" id="L49">        myGame.play();  </span>
+<span class="fc" id="L50">        System.out.println(&quot;&quot;);</span>
+<span class="fc" id="L51">    }</span>
+    
+    private static ArrayList&lt;Player&gt; createPlayers (int def, int coop, int tit, int ran, int titF, int less, int avg85, int lm, int cmp, int avg50, int antiTFT) {
+<span class="fc" id="L54">        ArrayList&lt;Player&gt; players = new ArrayList&lt;&gt;();</span>
+<span class="pc bpc" id="L55" title="1 of 22 branches missed.">        while (def &gt; 0 || coop &gt; 0 || tit &gt; 0 || ran &gt; 0 ||titF &gt; 0 || less &gt; 0 || avg85 &gt; 0 || lm &gt; 0 || cmp &gt; 0 || avg50 &gt; 0 || antiTFT &gt; 0) {</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">            if (def-- &gt; 0) players.add(new Player(new Defector()));</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">            if (coop-- &gt; 0) players.add(new Player(new Cooperator()));</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">            if (tit-- &gt; 0) players.add(new Player(new TitForTat()));</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">            if (ran-- &gt; 0) players.add(new Player(new Random()));</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">            if (titF-- &gt; 0) players.add(new Player(new TitForTatForgiver()));</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">            if (less-- &gt; 0) players.add(new Player(new LessWrongWinner()));</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">            if (avg85-- &gt; 0) players.add(new Player(new Averager85()));</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">            if (lm-- &gt; 0) players.add(new Player(new LongMemory()));</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">            if (cmp-- &gt; 0) players.add(new Player(new Comparator()));</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">            if (avg50-- &gt; 0) players.add(new Player(new Averager50()));</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">            if (antiTFT-- &gt; 0) players.add(new Player(new AntiTFT()));</span>
+        }
+<span class="fc" id="L68">        return players;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.2.201409121644</span></div></body></html>
