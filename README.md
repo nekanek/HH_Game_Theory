@@ -4,6 +4,8 @@
 
 Отчет находится в /report/index.html (или /report/reportGT.pdf)
 
+Code Coverage Report находится в /coverage
+
 Запускать из консоли
 
     $ javac Game/Main.java 
