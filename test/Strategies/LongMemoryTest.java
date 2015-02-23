@@ -6,33 +6,30 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import org.mockito.runners.MockitoJUnitRunner;
 
-
+@RunWith(MockitoJUnitRunner.class)
 public class LongMemoryTest {
     
     private static LongMemory instance;
+    @Mock
     private static Player me;
+    @Mock
     private static Player p2Cooperator;
-    private static Player p2Defector;
-    private static Player p2Random;
     
     
     @BeforeClass
     public static void setUpClass() {
         instance = new LongMemory();
-        me = new Player(instance);
-        p2Cooperator = new Player(new Cooperator());
-        p2Defector = new Player(new Defector());
-        p2Random = new Player(new Random());
     }
     
     @AfterClass
     public static void tearDownClass() {
         instance = null;
-        me = null;
-        p2Cooperator = null;
-        p2Defector = null;
-        p2Random = null;
     }
 
     /**
@@ -52,9 +49,11 @@ public class LongMemoryTest {
     @Test
     public void testChooseStrategy() {
         System.out.println("chooseStrategy");
-        boolean expResult = p2Cooperator.isLastNMovesTrue(3);
+        when(p2Cooperator.isLastNMovesTrue(3)).thenReturn(Boolean.TRUE);
+        boolean expResult = true;
         boolean result = instance.chooseStrategy(me, p2Cooperator, true);
         assertEquals(expResult, result);
+        verify(p2Cooperator).isLastNMovesTrue(3);
     }
 
     /**

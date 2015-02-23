@@ -3,14 +3,11 @@ package Game;
 
 import Strategies.Cooperator;
 import java.util.ArrayList;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Before;
 
 public class GameTest {
-
+    
     /**
      * Test of play method, of class Game.
      */

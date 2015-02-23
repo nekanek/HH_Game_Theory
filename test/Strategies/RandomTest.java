@@ -1,7 +1,6 @@
 
 package Strategies;
 
-import Game.Player;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -11,22 +10,16 @@ import static org.junit.Assert.*;
 public class RandomTest {
     
     private static Random instance;
-    private static Player me;
-    private static Player p2Cooperator;
-    private static Player p2Defector;
-    private static Player p2Random;
     
     
     @BeforeClass
     public static void setUpClass() {
         instance = new Random();
-        me = new Player(instance);
     }
     
     @AfterClass
     public static void tearDownClass() {
         instance = null;
-        me = null;
     }
 
     /**
@@ -47,9 +40,11 @@ public class RandomTest {
 //    public void testChooseStrategy() {
 //        System.out.println("chooseStrategy");
 //        boolean information = false;
-//        boolean expResult = false;
-//        boolean result = instance.chooseStrategy(me, opponent, information);
+//        boolean expResult = true;
+//        when(makeRandomMove()).thenReturn(true);
+//        boolean result = instance.chooseStrategy(me, p2Cooperator, information);
 //        assertEquals(expResult, result);
+//        verify(makeRandomMove());
 //    }
 
     /**

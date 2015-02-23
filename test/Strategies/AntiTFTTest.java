@@ -6,29 +6,30 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import org.mockito.runners.MockitoJUnitRunner;
 
+@RunWith(MockitoJUnitRunner.class)
 public class AntiTFTTest {
     
     private static AntiTFT instance;
+    @Mock
     private static Player me;
-    private static Player p2Cooperator;
+    @Mock
     private static Player p2Random;
     
     
     @BeforeClass
     public static void setUpClass() {
         instance = new AntiTFT();
-        me = new Player(instance);
-        p2Cooperator = new Player(new Cooperator());
-        p2Random = new Player(new Random());
     }
     
     @AfterClass
     public static void tearDownClass() {
         instance = null;
-        me = null;
-        p2Cooperator = null;
-        p2Random = null;
     }
 
     /**
@@ -45,14 +46,16 @@ public class AntiTFTTest {
     /**
      * Test of chooseStrategy method, of class AntiTFT.
      */
-//    @Test
-//    public void testChooseStrategy() {
-//        System.out.println("chooseStrategy");
-//        boolean information = true;
-//        boolean expResult = false;
-//        boolean result = instance.chooseStrategy(p2Cooperator, p2Random, information);
-//        assertEquals(expResult, result);
-//    }
+    @Test
+    public void testChooseStrategy() {
+        System.out.println("chooseStrategy");
+        when(me.getLastMove()).thenReturn(true);
+        boolean information = true;
+        boolean expResult = false;
+        boolean result = instance.chooseStrategy(me, p2Random, information);
+        assertEquals(expResult, result);
+        verify(me).getLastMove();
+    }
 
     /**
      * Test of isAntiTFT method, of class AntiTFT.

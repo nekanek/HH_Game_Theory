@@ -6,12 +6,20 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import org.mockito.runners.MockitoJUnitRunner;
 
+@RunWith(MockitoJUnitRunner.class)
 public class TitForTatForgiverTest {
     
     private static TitForTatForgiver instance;
+    @Mock
     private static Player me;
-    
+    @Mock
+    private static Player opponent;
     
     @BeforeClass
     public static void setUpClass() {
@@ -39,14 +47,16 @@ public class TitForTatForgiverTest {
     /**
      * Test of chooseStrategy method, of class TitForTatForgiver.
      */
-//    @Test
-//    public void testChooseStrategy() {
-//        System.out.println("chooseStrategy");
-//        boolean information = true;
-//        boolean expResult = false;
-//        boolean result = instance.chooseStrategy(me, opponent, information);
-//        assertEquals(expResult, result);
-//    }
+    @Test
+    public void testChooseStrategy() {
+        System.out.println("chooseStrategy");
+        boolean information = true;
+        boolean expResult = true;
+        when(opponent.getLastMove()).thenReturn(true);
+        boolean result = instance.chooseStrategy(me, opponent, information);
+        assertEquals(expResult, result);
+        verify(opponent).getLastMove();
+    }
 
     /**
      * Test of isTitForTatForgiver method, of class TitForTatForgiver.

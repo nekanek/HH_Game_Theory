@@ -6,26 +6,30 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import org.mockito.runners.MockitoJUnitRunner;
 
+@RunWith(MockitoJUnitRunner.class)
 public class Averager50Test {
     
     private static Averager50 instance;
+    @Mock
     private static Player me;
+    @Mock
     private static Player p2Cooperator;
     
     
     @BeforeClass
     public static void setUpClass() {
         instance = new Averager50();
-        me = new Player(instance);
-        p2Cooperator = new Player(new Cooperator());
     }
     
     @AfterClass
     public static void tearDownClass() {
         instance = null;
-        me = null;
-        p2Cooperator = null;
     }
 
     /**
@@ -46,9 +50,11 @@ public class Averager50Test {
     public void testChooseStrategy() {
         System.out.println("chooseStrategy");
         boolean information = true;
-        boolean expResult = p2Cooperator.getLastMove();
+        when(p2Cooperator.getNpercentMoves(0.5)).thenReturn(false);
+        boolean expResult = false;
         boolean result = instance.chooseStrategy(me, p2Cooperator, information);
         assertEquals(expResult, result);
+        verify(p2Cooperator).getNpercentMoves(0.5);
     }
 
     /**

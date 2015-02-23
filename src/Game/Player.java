@@ -17,7 +17,7 @@ public class Player {
         this(strategy, (Math.random() < 0.5));
     }
 
-    private Player(IStrategy strategy, boolean lastMove) {
+    public Player(IStrategy strategy, boolean lastMove) {
         this.movesHistory = new ArrayList<>();
         this.pScore = new ArrayList<>();
         this.strategy = strategy;
@@ -67,6 +67,9 @@ public class Player {
     
     public boolean getNpercentMoves(double n) {
         double percent = ((double)histCoop/(movesHistory.size()));
+//        System.out.println(histCoop);
+//        System.out.println(percent);
+//        System.out.println(Double.compare(percent, n) >= 0);
         return Double.compare(percent, n) >= 0;
        
     }
