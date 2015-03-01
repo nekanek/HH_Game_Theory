@@ -33,7 +33,7 @@ public class Player {
         return pScore;
     }
     
-    protected void addPScore(int pScore) {
+    void addPScore(int pScore) {
         this.pScore.add(pScore);
         totalPScore += pScore;
     }
@@ -42,7 +42,7 @@ public class Player {
         return totalPScore;
     }
     
-    protected void setLastMove(boolean lastMove) {
+    void setLastMove(boolean lastMove) {
         this.movesHistory.add(lastMove);
         if (lastMove) histCoop++;
     }
@@ -53,13 +53,13 @@ public class Player {
     
     public boolean isLastNMovesFalse(int n) {
         for (int i = movesHistory.size() - 1; i >= 0 && i >= movesHistory.size() - n; i--) 
-            if (false || movesHistory.get(i)) return false;
+            if (movesHistory.get(i)) return false;
         return true;
     }    
     
     public boolean isLastNMovesTrue(int n) {
         for (int i = movesHistory.size() - 1; i >= 0 && i >= movesHistory.size() - n; i--) 
-            if (!(true && movesHistory.get(i))) return false;
+            if (!movesHistory.get(i)) return false;
         return true;
     }       
     
@@ -69,7 +69,7 @@ public class Player {
        
     }
     
-    protected IStrategy getStrategy() {
+    IStrategy getStrategy() {
         return strategy;
     }
 

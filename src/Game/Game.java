@@ -21,7 +21,7 @@ public class Game {
     private final static int GAME_LENGTH_DEFAULT = 50;
     private final static boolean INFO_DEFAULT = true;
 
-    protected Game(List<Player> players, int gameLength, int ccScore, int cdScore, int dcScore, int ddScore, boolean hasInformation) {
+    Game(List<Player> players, int gameLength, int ccScore, int cdScore, int dcScore, int ddScore, boolean hasInformation) {
         if (players.size()%2 != 0) {
             throw new IllegalArgumentException("Number of players in a team should be even.");
         }
@@ -35,19 +35,19 @@ public class Game {
         this.hasInformation = hasInformation;
     }
 
-    protected Game(List<Player> players, int gameLength) {
+    Game(List<Player> players, int gameLength) {
         this(players, gameLength, CC_SCORE_DEFAULT, CD_SCORE_DEFAULT, DC_SCORE_DEFAULT, DD_SCORE_DEFAULT, INFO_DEFAULT);
     }
 
-    protected Game(List<Player> players, boolean information) {
+    Game(List<Player> players, boolean information) {
         this(players, GAME_LENGTH_DEFAULT, CC_SCORE_DEFAULT, CD_SCORE_DEFAULT, DC_SCORE_DEFAULT, DD_SCORE_DEFAULT, information);
     }
 
-    protected Game(List<Player> players) {
+    Game(List<Player> players) {
         this(players, INFO_DEFAULT);
     }
 
-    protected void play() {
+    void play() {
         for (int currentRound = 0; currentRound < gameLength; currentRound++) {
             Collections.shuffle(players);
             playRound();
@@ -101,7 +101,7 @@ public class Game {
         return scoreHistory.get(scoreHistory.size() - 1);
     }
 
-    protected int gameScore() {
+    int gameScore() {
         int sumScore = 0;
         for (int i : scoreHistory) {
             sumScore += i;

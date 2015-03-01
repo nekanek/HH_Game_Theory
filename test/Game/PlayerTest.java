@@ -68,9 +68,8 @@ public class PlayerTest {
         instance.setLastMove(false);
         instance.setLastMove(false);
         instance.setLastMove(false);
-        boolean expResult = true;
         boolean result = instance.isLastNMovesFalse(n);
-        assertEquals(expResult, result);
+        assertTrue(result);
     }
 
     /**
@@ -83,9 +82,8 @@ public class PlayerTest {
         instance.setLastMove(true);
         instance.setLastMove(true);
         instance.setLastMove(true);
-        boolean expResult = true;
         boolean result = instance.isLastNMovesTrue(n);
-        assertEquals(expResult, result);
+        assertTrue(result);
     }
 
     /**
@@ -100,9 +98,8 @@ public class PlayerTest {
         instance.setLastMove(true);
         instance.setLastMove(true);
         instance.setLastMove(true);
-        boolean expResult = true;
         boolean result = instance.getNpercentMoves(n);
-        assertEquals(expResult, result);
+        assertTrue(result);
     }
 
     /**

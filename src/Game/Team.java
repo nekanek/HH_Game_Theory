@@ -8,7 +8,7 @@ import strategies.*;
 public class Team {
   final List<Player> team;
 
-  public static class TeamBuilder {
+  static class TeamBuilder {
       List<Player> players = new ArrayList<>();
       int def = 0;
       int coop = 0; 
@@ -117,7 +117,7 @@ public class Team {
     
   }
   
-    public Team(TeamBuilder team) {
+    Team(TeamBuilder team) {
         this.team = new ArrayList<>(team.players);
     }  
   

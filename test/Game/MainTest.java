@@ -21,10 +21,10 @@ public class MainTest {
     /**
      * Test of main method, of class Main.
      */
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        Main.main(new String[0]);
-    }
+//    @Test
+//    public void testMain() {
+//        System.out.println("main");
+//        Main.main(new String[0]);
+//    }
     
 }
