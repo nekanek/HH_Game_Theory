@@ -1,11 +1,9 @@
 
-package Game;
+package game;
 
-import Strategies.Cooperator;
-import Strategies.IStrategy;
+import strategies.Cooperator;
+import strategies.IStrategy;
 import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;

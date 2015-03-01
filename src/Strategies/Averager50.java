@@ -1,10 +1,10 @@
 
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 
 
-public class Averager50 extends IStrategy {
+public class Averager50 implements IStrategy {
 
     @Override
     public String toString() {
@@ -16,9 +16,12 @@ public class Averager50 extends IStrategy {
         if (!information) return IStrategy.makeRandomMove();
         return opponent.getNpercentMoves(0.5);
     }
-    
+
     @Override
-    public boolean isAvg50() {
-        return true;
-    }   
+    public EStrategy whichStrategy() {
+        return EStrategy.AVG_50;
+    }
+    
+    
+
 }

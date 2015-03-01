@@ -1,14 +1,15 @@
+package strategies;
+
+import game.Player;
+import java.util.HashSet;
+import java.util.Set;
+
 /* winning strategy from http://lesswrong.com/lw/7f2/prisoners_dilemma_tournament_results/
  * Make opponents last move, unless opponent defected 7 times (or if half the game is over - not implemented)
  */
-package Strategies;
-
-import Game.Player;
-import java.util.HashSet;
-
-public class LessWrongWinner extends IStrategy {
+public class LessWrongWinner implements IStrategy {
     
-    private final HashSet<Player> blackList = new HashSet<>();
+    private final Set<Player> blackList = new HashSet<>();
     
     @Override
     public boolean chooseStrategy(Player me, Player opponent, boolean information) {
@@ -25,10 +26,9 @@ public class LessWrongWinner extends IStrategy {
     public String toString() {
         return "LessWrong Winner";
     }
-
-    @Override
-    public boolean isLess() {
-        return true;
-    }
     
+    @Override
+    public EStrategy whichStrategy() {
+        return EStrategy.LESS;
+    }    
 }

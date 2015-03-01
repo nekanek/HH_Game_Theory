@@ -1,7 +1,7 @@
 
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -51,9 +51,8 @@ public class TitForTatTest {
         System.out.println("chooseStrategy");
         boolean information = true;
         when(p2Cooperator.getLastMove()).thenReturn(true);
-        boolean expResult = true;
         boolean result = instance.chooseStrategy(me, p2Cooperator, information);
-        assertEquals(expResult, result);
+        assertTrue(result);
         verify(p2Cooperator).getLastMove();
     }
 
@@ -61,9 +60,8 @@ public class TitForTatTest {
      * Test of isTitForTat method, of class TitForTat.
      */
     @Test
-    public void testIsTitForTat() {
-        System.out.println("isTitForTat");
-        assertTrue(instance.isTitForTat());
+    public void testWhichStrategy() {
+        assertTrue(instance.whichStrategy() == IStrategy.EStrategy.TFT);
     }
     
 }

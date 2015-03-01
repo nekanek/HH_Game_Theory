@@ -1,7 +1,7 @@
 
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -50,9 +50,8 @@ public class LongMemoryTest {
     public void testChooseStrategy() {
         System.out.println("chooseStrategy");
         when(p2Cooperator.isLastNMovesTrue(3)).thenReturn(Boolean.TRUE);
-        boolean expResult = true;
         boolean result = instance.chooseStrategy(me, p2Cooperator, true);
-        assertEquals(expResult, result);
+        assertTrue(result);
         verify(p2Cooperator).isLastNMovesTrue(3);
     }
 
@@ -60,10 +59,8 @@ public class LongMemoryTest {
      * Test of isLongMemory method, of class LongMemory.
      */
     @Test
-    public void testIsLongMemory() {
-        System.out.println("isLongMemory");
-        assertTrue(instance.isLongMemory());
-
+    public void testWhichStrategy() {
+        assertTrue(instance.whichStrategy() == IStrategy.EStrategy.LONG_MEM);
     }
     
 }

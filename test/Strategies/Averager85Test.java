@@ -1,7 +1,7 @@
 
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -50,9 +50,8 @@ public class Averager85Test {
         System.out.println("chooseStrategy");
         boolean information = true;
         when(p2Cooperator.getNpercentMoves(0.85)).thenReturn(true);
-        boolean expResult = true;
         boolean result = instance.chooseStrategy(me, p2Cooperator, information);
-        assertEquals(expResult, result);
+        assertTrue(result);
         verify(p2Cooperator).getNpercentMoves(0.85);
     }
 
@@ -60,9 +59,8 @@ public class Averager85Test {
      * Test of isAvg85 method, of class Averager85.
      */
     @Test
-    public void testIsAvg85() {
-        System.out.println("isAvg85");
-        assertTrue(instance.isAvg85());
+    public void testWhichStrategy() {
+        assertTrue(instance.whichStrategy() == IStrategy.EStrategy.AVG_85);
     }
     
 }

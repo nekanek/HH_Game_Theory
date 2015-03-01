@@ -1,11 +1,11 @@
 
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 
 
-public class Random extends IStrategy {
-
+public class Random implements IStrategy {
+    
     @Override
     public String toString() {
         return "Pure random"; 
@@ -15,9 +15,9 @@ public class Random extends IStrategy {
     public boolean chooseStrategy(Player me, Player opponent, boolean information) {
         return IStrategy.makeRandomMove();
     }
-    
+
     @Override
-    public boolean isRandom() {
-        return true;
+    public EStrategy whichStrategy() {
+        return EStrategy.RAND;
     }    
 }

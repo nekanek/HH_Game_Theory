@@ -1,71 +1,32 @@
-package Game;
-
-import Strategies.*;
-import java.util.ArrayList;
-
+package game;
 
 public class Main {    
 
     public static void main(String[] args) {
-        startGame("Coopers", 1, 5, 3, 
-                             0, 1, 0, 
-                             0, 0, 0, 0, 0);
         
-        startGame("Titers", 1, 0, 6, 
-                             0, 3, 0, 
-                             0, 0, 0, 0, 0);
-        
-        startGame("Rationals", 0, 0, 3, 
-                             0, 3, 2, 
-                             2, 0, 0, 0, 0);  
-        
-        startGame("Ignorants", 0, 0, 0,  10, 0, 0,  0, 0, 0, 0, 0);
-        
-        startGame("Balanced", 1, 1, 2, 
-                             2, 1, 1, 
-                             2, 0, 0, 0, 0);  
-        startGame("Pure Def", 10, 0, 0,  0, 0, 0,  0, 0, 0, 0, 0);
-        startGame("Pure Coop", 0, 10, 0,  0, 0, 0,  0, 0, 0, 0, 0);
-        startGame("Pure Tit", 0, 0, 10,  0, 0, 0,  0, 0, 0, 0, 0);
-        startGame("Pure Rand", 0, 0, 0,  10, 0, 0,  0, 0, 0, 0, 0);
-        startGame("Pure Tit forgiving", 0, 0, 0,  0, 10, 0,  0, 0, 0, 0, 0);
-        startGame("Pure Less", 0, 0, 0,  0, 0, 10,  0, 0, 0, 0, 0);
-        startGame("Pure avg85", 0, 0, 0,  0, 0, 0,  10, 0, 0, 0, 0);
-        startGame("Pure long mem", 0, 0, 0,  0, 0, 0,  0, 10, 0, 0, 0);
-        startGame("Pure comparators", 0, 0, 0,  0, 0, 0,  0, 0, 10, 0, 0);
-        startGame("Pure avg50", 0, 0, 0,  0, 0, 0,  0, 0, 0, 10, 0);
-        startGame("coops and long mem", 0, 8, 0,  0, 0, 0,  0, 2, 0, 0, 0);
-        startGame("comps and less and long mem", 0, 0, 0,  0, 0, 3,  0, 4, 3, 0, 0);
-        startGame("Anti TFT and TFT", 0, 0, 9,  0, 0, 0,  0, 0, 0, 0, 1);
+        startGame("Coopers", new Team.TeamBuilder().setDef(1).setCoop(5).setTit(3).setTitF(1).build());
+        startGame("Titers", new Team.TeamBuilder().setDef(1).setTit(6).setTitF(3).build());
+        startGame("Rationals", new Team.TeamBuilder().setTit(3).setTitF(3).setLess(2).setAvg85(2).build());
+        startGame("Ignorants", new Team.TeamBuilder().setRan(10).build());
+        startGame("Balanced", new Team.TeamBuilder().setDef(1).setCoop(1).setTit(2).setRan(2).setTitF(1).setLess(1).setAvg85(2).build());
+        startGame("Pure Coop", new Team.TeamBuilder().setCoop(10).build());
+        startGame("Pure Tit", new Team.TeamBuilder().setTit(10).build());
+        startGame("Pure Def", new Team.TeamBuilder().setDef(10).build());
+        startGame("Pure Tit forgiving", new Team.TeamBuilder().setTitF(10).build());
+        startGame("Pure Less", new Team.TeamBuilder().setLess(10).build());
+        startGame("Pure avg85", new Team.TeamBuilder().setAvg85(10).build());
+        startGame("Pure long mem", new Team.TeamBuilder().setLm(10).build());
+        startGame("Pure comparators", new Team.TeamBuilder().setCmp(10).build());
+        startGame("Pure avg50", new Team.TeamBuilder().setAvg50(10).build());
+        startGame("Anti TFT and TFT", new Team.TeamBuilder().setTit(9).setAntiTFT(1).build());
+        startGame("comps and less and long mem", new Team.TeamBuilder().setLess(3).setLm(4).setCmp(3).build());
+        startGame("coops and long mem", new Team.TeamBuilder().setCoop(8).setLm(2).build());
     }
     
-    private static void startGame(String label, int def, int coop, int tit, int ran, int titF, int less, int avg85, int lm, int cmp, int avg50, int antiTFT) {
+    private static void startGame(String label, Team team) {
         System.out.println(label);
-        ArrayList<Player> team = createPlayers(def, coop, tit, 
-                                               ran, titF, less, 
-                                               avg85, lm, cmp, 
-                                               avg50, antiTFT);  
-        Game myGame = new Game(team, true);
+        Game myGame = new Game(team.team, true);
         myGame.play();  
-        System.out.println("");
+        System.out.println();
     }
-    
-    private static ArrayList<Player> createPlayers (int def, int coop, int tit, int ran, int titF, int less, int avg85, int lm, int cmp, int avg50, int antiTFT) {
-        ArrayList<Player> players = new ArrayList<>();
-        while (def > 0 || coop > 0 || tit > 0 || ran > 0 ||titF > 0 || less > 0 || avg85 > 0 || lm > 0 || cmp > 0 || avg50 > 0 || antiTFT > 0) {
-            if (def-- > 0) players.add(new Player(new Defector()));
-            if (coop-- > 0) players.add(new Player(new Cooperator()));
-            if (tit-- > 0) players.add(new Player(new TitForTat()));
-            if (ran-- > 0) players.add(new Player(new Random()));
-            if (titF-- > 0) players.add(new Player(new TitForTatForgiver()));
-            if (less-- > 0) players.add(new Player(new LessWrongWinner()));
-            if (avg85-- > 0) players.add(new Player(new Averager85()));
-            if (lm-- > 0) players.add(new Player(new LongMemory()));
-            if (cmp-- > 0) players.add(new Player(new Comparator()));
-            if (avg50-- > 0) players.add(new Player(new Averager50()));
-            if (antiTFT-- > 0) players.add(new Player(new AntiTFT()));
-        }
-        return players;
-    }
-
 }

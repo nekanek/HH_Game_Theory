@@ -1,10 +1,11 @@
 
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 
 
-public class AntiTFT extends IStrategy {
+public class AntiTFT implements IStrategy {
+    
     @Override
     public String toString() {
         return "Anti Tit-for-Tat"; 
@@ -18,8 +19,9 @@ public class AntiTFT extends IStrategy {
     }
 
     @Override
-    public boolean isAntiTFT() {
-        return true;
+    public EStrategy whichStrategy() {
+        return EStrategy.ANTI_TFT;
     }
+    
     
 }

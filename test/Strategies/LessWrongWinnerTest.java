@@ -1,13 +1,12 @@
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -40,9 +39,8 @@ public class LessWrongWinnerTest {
         System.out.println("chooseStrategy");
         boolean information = true;
         when(p2Cooperator.isLastNMovesFalse(7)).thenReturn(true);
-        boolean expResult = false;
         boolean result = instance.chooseStrategy(me, p2Cooperator, information);
-        assertEquals(expResult, result);
+        assertFalse(result);
         verify(p2Cooperator).isLastNMovesFalse(7);
     }
 
@@ -61,10 +59,8 @@ public class LessWrongWinnerTest {
      * Test of isLess method, of class LessWrongWinner.
      */
     @Test
-    public void testIsLess() {
-        System.out.println("isLess");
-        assertTrue(instance.isLess());
-
+    public void testWhichStrategy() {
+        assertTrue(instance.whichStrategy() == IStrategy.EStrategy.LESS);
     }
     
 }

@@ -1,13 +1,13 @@
-package Game;
+package game;
 
-import Strategies.IStrategy;
-import java.math.BigDecimal;
+import strategies.IStrategy;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
     
-    private final ArrayList<Integer> pScore;
-    private final ArrayList<Boolean> movesHistory;
+    private final List<Integer> pScore;
+    private final List<Boolean> movesHistory;
     private int histCoop = 0;
     private int totalPScore = 0;
     
@@ -29,13 +29,13 @@ public class Player {
 //        return pScore.get(pScore.size()-1);
 //    }
 
-    private ArrayList<Integer> getPScoreHistory() {
+    private List<Integer> getPScoreHistory() {
         return pScore;
     }
     
     protected void addPScore(int pScore) {
         this.pScore.add(pScore);
-        this.totalPScore += pScore;
+        totalPScore += pScore;
     }
 
     public int getTotalPScore() {
@@ -52,24 +52,19 @@ public class Player {
     }
     
     public boolean isLastNMovesFalse(int n) {
-        boolean result = false;
         for (int i = movesHistory.size() - 1; i >= 0 && i >= movesHistory.size() - n; i--) 
-            if (result || movesHistory.get(i)) return false;
+            if (false || movesHistory.get(i)) return false;
         return true;
     }    
     
     public boolean isLastNMovesTrue(int n) {
-        boolean result = true;
         for (int i = movesHistory.size() - 1; i >= 0 && i >= movesHistory.size() - n; i--) 
-            if (!(result && movesHistory.get(i))) return false;
+            if (!(true && movesHistory.get(i))) return false;
         return true;
     }       
     
     public boolean getNpercentMoves(double n) {
         double percent = ((double)histCoop/(movesHistory.size()));
-//        System.out.println(histCoop);
-//        System.out.println(percent);
-//        System.out.println(Double.compare(percent, n) >= 0);
         return Double.compare(percent, n) >= 0;
        
     }

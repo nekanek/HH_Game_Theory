@@ -1,7 +1,7 @@
 
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -55,9 +55,8 @@ public class CooperatorTest {
      * Test of isCooperator method, of class Cooperator.
      */
     @Test
-    public void testIsCooperator() {
-        System.out.println("isCooperator");
-        assertTrue(instance.isCooperator());
+    public void testWhichStrategy() {
+        assertTrue(instance.whichStrategy() == IStrategy.EStrategy.COOP);
     }
     
 }

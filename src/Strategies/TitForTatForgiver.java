@@ -1,11 +1,11 @@
 
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 
 
-public class TitForTatForgiver extends IStrategy {
-
+public class TitForTatForgiver implements IStrategy {
+    
     private final double forgivenessChance = 0.5;
 
     @Override
@@ -21,8 +21,7 @@ public class TitForTatForgiver extends IStrategy {
     }
     
     @Override
-    public boolean isTitForTatForgiver() {
-        return true;
-    }
-    
+    public EStrategy whichStrategy() {
+        return EStrategy.TFT_FORG;
+    }    
 }

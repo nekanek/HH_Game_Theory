@@ -1,10 +1,11 @@
 
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 
 
-public class LongMemory extends IStrategy {
+public class LongMemory implements IStrategy {
+    
     @Override
     public String toString() {
         return "Long Memory"; 
@@ -17,10 +18,10 @@ public class LongMemory extends IStrategy {
         else
             return IStrategy.makeRandomMove();
     }
-
+    
     @Override
-    public boolean isLongMemory() {
-        return true;
-    }
+    public EStrategy whichStrategy() {
+        return EStrategy.LONG_MEM;
+    }    
     
 }

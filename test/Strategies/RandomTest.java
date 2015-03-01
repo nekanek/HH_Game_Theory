@@ -1,5 +1,5 @@
 
-package Strategies;
+package strategies;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -51,9 +51,8 @@ public class RandomTest {
      * Test of isRandom method, of class Random.
      */
     @Test
-    public void testIsRandom() {
-        System.out.println("isRandom");
-        assertTrue(instance.isRandom());
+    public void testWhichStrategy() {
+        assertTrue(instance.whichStrategy() == IStrategy.EStrategy.RAND);
     }
     
 }

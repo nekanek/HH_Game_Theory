@@ -1,11 +1,11 @@
 
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 
 
-public class Averager85 extends IStrategy {
-
+public class Averager85 implements IStrategy {
+    
     @Override
     public String toString() {
         return "Averager 85%"; 
@@ -18,7 +18,7 @@ public class Averager85 extends IStrategy {
     }
     
     @Override
-    public boolean isAvg85() {
-        return true;
-    }   
+    public EStrategy whichStrategy() {
+        return EStrategy.AVG_85;
+    }  
 }

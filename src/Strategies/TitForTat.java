@@ -1,10 +1,11 @@
 
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 
 
-public class TitForTat extends IStrategy {
+public class TitForTat implements IStrategy {
+    
     @Override
     public String toString() {
         return "Tit-for-Tat"; 
@@ -17,8 +18,7 @@ public class TitForTat extends IStrategy {
     }
 
     @Override
-    public boolean isTitForTat() {
-        return true;
-    }
-    
+    public EStrategy whichStrategy() {
+        return EStrategy.TFT;
+    }    
 }

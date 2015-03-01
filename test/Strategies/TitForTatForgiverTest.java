@@ -1,7 +1,7 @@
 
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -51,10 +51,9 @@ public class TitForTatForgiverTest {
     public void testChooseStrategy() {
         System.out.println("chooseStrategy");
         boolean information = true;
-        boolean expResult = true;
         when(opponent.getLastMove()).thenReturn(true);
         boolean result = instance.chooseStrategy(me, opponent, information);
-        assertEquals(expResult, result);
+        assertTrue(result);
         verify(opponent).getLastMove();
     }
 
@@ -62,9 +61,8 @@ public class TitForTatForgiverTest {
      * Test of isTitForTatForgiver method, of class TitForTatForgiver.
      */
     @Test
-    public void testIsTitForTatForgiver() {
-        System.out.println("isTitForTatForgiver");
-        assertTrue(instance.isTitForTatForgiver());
+    public void testWhichStrategy() {
+        assertTrue(instance.whichStrategy() == IStrategy.EStrategy.TFT_FORG);
     }
     
 }

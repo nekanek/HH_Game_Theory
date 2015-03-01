@@ -1,8 +1,9 @@
 
-package Game;
+package game;
 
-import Strategies.Cooperator;
+import strategies.Cooperator;
 import java.util.ArrayList;
+import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -14,7 +15,7 @@ public class GameTest {
     @Test
     public void testPlay() {
         System.out.println("play");
-        ArrayList<Player> team = new ArrayList<>();
+        List<Player> team = new ArrayList<>();
         team.add(new Player(new Cooperator()));
         team.add(new Player(new Cooperator()));
         Game myGame = new Game(team, true);

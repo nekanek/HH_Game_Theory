@@ -1,11 +1,11 @@
 
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 
 
-public class Defector extends IStrategy {
-
+public class Defector implements IStrategy {
+    
     @Override
     public String toString() {
         return "Defector"; 
@@ -15,9 +15,9 @@ public class Defector extends IStrategy {
     public boolean chooseStrategy(Player me, Player p2, boolean information) {
         return false;
     }
-    
+
     @Override
-    public boolean isDefector() {
-        return true;
-    }
+    public EStrategy whichStrategy() {
+        return EStrategy.DEF;
+    }    
 }

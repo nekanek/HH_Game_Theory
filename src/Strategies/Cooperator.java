@@ -1,11 +1,11 @@
 
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 
 
-public class Cooperator extends IStrategy {
-
+public class Cooperator implements IStrategy {
+    
     @Override
     public String toString() {
         return "Cooperator";
@@ -15,10 +15,9 @@ public class Cooperator extends IStrategy {
     public boolean chooseStrategy(Player me, Player opponent, boolean information) {
         return true;
     }
-
-    @Override
-    public boolean isCooperator() {
-        return true;
-    }
     
+    @Override
+    public EStrategy whichStrategy() {
+        return EStrategy.COOP;
+    }    
 }

@@ -1,7 +1,7 @@
 
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -61,9 +61,8 @@ public class DefectorTest {
      * Test of isDefector method, of class Defector.
      */
     @Test
-    public void testIsDefector() {
-        System.out.println("isDefector");
-        assertTrue(instance.isDefector());
+    public void testWhichStrategy() {
+        assertTrue(instance.whichStrategy() == IStrategy.EStrategy.DEF);
     }
     
 }

@@ -1,10 +1,11 @@
 
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 
 
-public class Comparator extends IStrategy {
+public class Comparator implements IStrategy {
+    
     @Override
     public String toString() {
         return "Comparator"; 
@@ -19,9 +20,9 @@ public class Comparator extends IStrategy {
             else
                 return me.getLastMove();
     }
-    @Override
-    public boolean isComparator() {
-        return true;
-    }
     
+    @Override
+    public EStrategy whichStrategy() {
+        return EStrategy.COMP;
+    }      
 }

@@ -1,6 +1,6 @@
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -78,10 +78,8 @@ public class ComparatorTest {
      * Test of isComparator method, of class Comparator.
      */
     @Test
-    public void testIsComparator() {
-        System.out.println("isComparator");
-        assertTrue(instance.isComparator());
-
+    public void testWhichStrategy() {
+        assertTrue(instance.whichStrategy() == IStrategy.EStrategy.COMP);
     }
     
 }

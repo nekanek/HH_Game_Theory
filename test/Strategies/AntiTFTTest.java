@@ -1,7 +1,7 @@
 
-package Strategies;
+package strategies;
 
-import Game.Player;
+import game.Player;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -51,9 +51,8 @@ public class AntiTFTTest {
         System.out.println("chooseStrategy");
         when(me.getLastMove()).thenReturn(true);
         boolean information = true;
-        boolean expResult = false;
         boolean result = instance.chooseStrategy(me, p2Random, information);
-        assertEquals(expResult, result);
+        assertFalse(result);
         verify(me).getLastMove();
     }
 
@@ -61,9 +60,9 @@ public class AntiTFTTest {
      * Test of isAntiTFT method, of class AntiTFT.
      */
     @Test
-    public void testIsAntiTFT() {
+    public void testWhichStrategy() {
         System.out.println("isAntiTFT");
-        assertTrue(instance.isAntiTFT());
+        assertTrue(instance.whichStrategy() == IStrategy.EStrategy.ANTI_TFT);
     }
     
 }
