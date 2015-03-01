@@ -56,17 +56,18 @@ public class Game {
     }
 
     private void playRound() {
-        scoreHistory.add(0);
+        int roundScore = 0;
         Player p1;
         Player p2;
         for (int i = 0; i < players.size() - 1; i += 2) {
             p1 = players.get(i);
             p2 = players.get(i + 1);
-            playInteraction(p1, p2);
+            roundScore += playInteraction(p1, p2);
         }
+        scoreHistory.add(roundScore);
     }
 
-    private void playInteraction(Player p1, Player p2) {
+    private int playInteraction(Player p1, Player p2) {
         boolean s1, s2;
         s1 = p1.getStrategy().chooseStrategy(p1, p2, hasInformation);
         s2 = p2.getStrategy().chooseStrategy(p2, p1, hasInformation);
@@ -75,19 +76,19 @@ public class Game {
         if (s1 && s2) {
             p1.addPScore(ccScore);
             p2.addPScore(ccScore);
-            scoreHistory.set(scoreHistory.size() - 1, currScore() + ccScore * 2);
+            return ccScore * 2;
         } else if (s1) {
             p1.addPScore(cdScore);
             p2.addPScore(dcScore);
-            scoreHistory.set(scoreHistory.size() - 1, currScore() + cdScore + dcScore);
+            return cdScore + dcScore;
         } else if (s2) {
             p1.addPScore(dcScore);
             p2.addPScore(cdScore);
-            scoreHistory.set(scoreHistory.size() - 1, currScore() + cdScore + dcScore);
+            return cdScore + dcScore;
         } else {
             p1.addPScore(ddScore);
             p2.addPScore(ddScore);
-            scoreHistory.set(scoreHistory.size() - 1, currScore() + ddScore * 2);
+            return ddScore * 2;
         }
     }
 
