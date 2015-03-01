@@ -59,7 +59,7 @@ public class Game {
         scoreHistory.add(0);
         Player p1;
         Player p2;
-        for (int i = 0; i < players.size(); i += 2) {
+        for (int i = 0; i < players.size() - 1; i += 2) {
             p1 = players.get(i);
             p2 = players.get(i + 1);
             playInteraction(p1, p2);
