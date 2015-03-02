@@ -5,8 +5,7 @@ deploy:
   provider: releases
   file: "/home/travis/build/nekanek/HH_Game_Theory/target/GameTheory-1.0.jar"
   api-key:
-    secure: bnUx84j/L5STF8riYXomUR/+czfKQJBEvxRDOhgEYhSDfmi9eEHj3ewZ4ZSAzRxN0HFcashW12D+8uGgEMolwGFcCba+ylx+8KgpU+ADkgbjLzLfugMozwsYrLLusxsg471OIm7QkwWcq+qHPhelROf/ceN+hudwy+JyMWnsq/g=
-true:
+    secure: bnUx84j/L5STF8riYXomUR/+czfKQJBEvxRDOhgEYhSDfmi9eEHj3ewZ4ZSAzRxN0HFcashW12D+8uGgEMolwGFcCba+ylx+8KgpU+ADkgbjLzLfugMozwsYrLLusxsg471OIm7Qk
   skip_cleanup: true
   on:
     tags: true
