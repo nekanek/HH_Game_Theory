@@ -5,6 +5,6 @@ deploy:
   provider: releases
   api_key:
     secure: Y3pd+qNB9UrljbGB2RXLvArO/RHd3Vv+j+DqvP6GuWoKhZ7ur4pppCkgyvTo4DbgOaxP4ZCAmh99c2ulbFI+rcYVoDEdKz3wK6wgH8EtIs2tLAfMAwK2CD652Fu0+wFNtTC4PGClnl8hCfhbrxSU8Dj18RMXQFo8URXo3A3Fp8w=
-  file: "/home/travis/.m2/repository/hh/GameTheory/1.0/GameTheory-1.0.jar"
+  file: "/home/travis/.m2/repository/hh/GameTheory/2.2/GameTheory-2.2.jar"
   on:
     repo: nekanek/HH_Game_Theory
