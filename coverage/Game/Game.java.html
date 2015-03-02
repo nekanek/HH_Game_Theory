@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Game.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;HH_Game_Theory&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Game</a> &gt; <span class="el_source">Game.java</span></div><h1>Game.java</h1><pre class="source lang-java linenums">package Game;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Game {
+    
+    private ArrayList&lt;Player&gt; players;
+    private final int gameLength;
+    private final boolean information;
+    private final int ccScore;
+    private final int cdScore;
+    private final int dcScore;
+    private final int ddScore;
+<span class="fc" id="L15">    private final ArrayList&lt;Integer&gt; scoreHistory = new ArrayList&lt;&gt;();</span>
+    
+    private final static int CC_SCORE_DEFAULT = 10;
+    private final static int CD_SCORE_DEFAULT = -10;
+    private final static int DC_SCORE_DEFAULT = 20;
+    private final static int DD_SCORE_DEFAULT = 0;
+    private final static int GAME_LENGTH_DEFAULT = 50;
+    private final static boolean INFO_DEFAULT = true;    
+    
+    
+<span class="fc" id="L25">    protected Game(ArrayList&lt;Player&gt; players, int gameLength, int CC_SCORE, int CD_SCORE, int DC_SCORE, int DD_SCORE, boolean information) {</span>
+<span class="fc" id="L26">        this.players = players;</span>
+<span class="fc" id="L27">        this.gameLength = gameLength;</span>
+<span class="fc" id="L28">        this.ccScore = CC_SCORE;</span>
+<span class="fc" id="L29">        this.cdScore = CD_SCORE;</span>
+<span class="fc" id="L30">        this.dcScore = DC_SCORE;</span>
+<span class="fc" id="L31">        this.ddScore = DD_SCORE;</span>
+<span class="fc" id="L32">        this.information = information;</span>
+<span class="fc" id="L33">    }</span>
+
+    protected Game(ArrayList&lt;Player&gt; players, int gameLength) {
+<span class="nc" id="L36">        this(players, gameLength, CC_SCORE_DEFAULT, CD_SCORE_DEFAULT, DC_SCORE_DEFAULT, DD_SCORE_DEFAULT, INFO_DEFAULT);</span>
+<span class="nc" id="L37">    }    </span>
+
+    protected Game(ArrayList&lt;Player&gt; players, boolean information) {
+<span class="fc" id="L40">        this(players, GAME_LENGTH_DEFAULT, CC_SCORE_DEFAULT, CD_SCORE_DEFAULT, DC_SCORE_DEFAULT, DD_SCORE_DEFAULT, information);</span>
+<span class="fc" id="L41">    }    </span>
+    
+    protected Game(ArrayList&lt;Player&gt; players) {
+<span class="nc" id="L44">        this(players, INFO_DEFAULT);</span>
+<span class="nc" id="L45">    }    </span>
+    
+    protected void play() {
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        for (int currentRound = 0; currentRound &lt; gameLength; currentRound++) {</span>
+<span class="fc" id="L49">            Collections.shuffle(players); </span>
+<span class="fc" id="L50">            playRound();</span>
+        }
+<span class="fc" id="L52">        printResults();</span>
+<span class="fc" id="L53">    }</span>
+    
+    private void playRound() {
+<span class="fc" id="L56">        scoreHistory.add(0);</span>
+        Player p1;
+        Player p2;
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        for (int i = 0; i &lt; players.size(); i += 2) {</span>
+<span class="fc" id="L60">            p1 = players.get(i);</span>
+<span class="fc" id="L61">            p2 = players.get(i+1);</span>
+<span class="fc" id="L62">            playInteraction(p1, p2);</span>
+        }
+<span class="fc" id="L64">    }</span>
+    
+    private void playInteraction (Player p1, Player p2) {
+        boolean s1, s2;
+<span class="fc" id="L68">        s1 = p1.getStrategy().chooseStrategy(p1, p2, this.information);</span>
+<span class="fc" id="L69">        s2 = p2.getStrategy().chooseStrategy(p2, p1, this.information);</span>
+<span class="fc" id="L70">        p1.setLastMove(s1);</span>
+<span class="fc" id="L71">        p2.setLastMove(s2);</span>
+<span class="fc bfc" id="L72" title="All 4 branches covered.">        if (s1 &amp;&amp; s2) {</span>
+<span class="fc" id="L73">            p1.addPScore(ccScore);</span>
+<span class="fc" id="L74">            p2.addPScore(ccScore);</span>
+<span class="fc" id="L75">            scoreHistory.set(scoreHistory.size()-1, currScore() + ccScore * 2);</span>
+        }
+<span class="fc bfc" id="L77" title="All 2 branches covered.">        else if (s1) {</span>
+<span class="fc" id="L78">            p1.addPScore(cdScore);</span>
+<span class="fc" id="L79">            p2.addPScore(dcScore);</span>
+<span class="fc" id="L80">            scoreHistory.set(scoreHistory.size()-1, currScore() + cdScore + dcScore);</span>
+        }
+<span class="fc bfc" id="L82" title="All 2 branches covered.">        else if (s2) {</span>
+<span class="fc" id="L83">            p1.addPScore(dcScore);</span>
+<span class="fc" id="L84">            p2.addPScore(cdScore);</span>
+<span class="fc" id="L85">            scoreHistory.set(scoreHistory.size()-1, currScore() + cdScore + dcScore);            </span>
+        }
+        else {
+<span class="fc" id="L88">            p1.addPScore(ddScore);</span>
+<span class="fc" id="L89">            p2.addPScore(ddScore);</span>
+<span class="fc" id="L90">            scoreHistory.set(scoreHistory.size()-1, currScore() + ddScore * 2);            </span>
+        }        
+<span class="fc" id="L92">    }</span>
+
+    private void printResults() {
+<span class="fc" id="L95">        System.out.println(&quot;Overall Game score: &quot; + gameScore());        </span>
+<span class="fc" id="L96">        System.out.println(&quot;Score history: &quot;);</span>
+<span class="fc" id="L97">        System.out.println(scoreHistory.toString());</span>
+<span class="fc" id="L98">    }</span>
+
+    private int currScore() {
+<span class="fc" id="L101">        return scoreHistory.get(scoreHistory.size()-1);</span>
+    }
+    
+    protected int gameScore() {
+<span class="fc" id="L105">        int sumScore = 0;</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">        for (int i : scoreHistory) {</span>
+<span class="fc" id="L107">            sumScore += i;</span>
+<span class="fc" id="L108">        }</span>
+<span class="fc" id="L109">        return sumScore;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.2.201409121644</span></div></body></html>

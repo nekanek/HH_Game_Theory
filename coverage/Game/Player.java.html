@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Player.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;HH_Game_Theory&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Game</a> &gt; <span class="el_source">Player.java</span></div><h1>Player.java</h1><pre class="source lang-java linenums">package Game;
+
+import Strategies.IStrategy;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+
+public class Player {
+    
+    private final ArrayList&lt;Integer&gt; pScore;
+    private final ArrayList&lt;Boolean&gt; movesHistory;
+<span class="fc" id="L11">    private int histCoop = 0;</span>
+<span class="fc" id="L12">    private int totalPScore = 0;</span>
+    
+    private final IStrategy strategy;
+
+    public Player(IStrategy strategy) {
+<span class="fc bfc" id="L17" title="All 2 branches covered.">        this(strategy, (Math.random() &lt; 0.5));</span>
+<span class="fc" id="L18">    }</span>
+
+<span class="fc" id="L20">    private Player(IStrategy strategy, boolean lastMove) {</span>
+<span class="fc" id="L21">        this.movesHistory = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L22">        this.pScore = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L23">        this.strategy = strategy;</span>
+<span class="fc" id="L24">        this.movesHistory.add(lastMove);</span>
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        if (lastMove) histCoop++;</span>
+<span class="fc" id="L26">    }</span>
+    
+//    private int getPScore() {
+//        return pScore.get(pScore.size()-1);
+//    }
+
+    private ArrayList&lt;Integer&gt; getPScoreHistory() {
+<span class="nc" id="L33">        return pScore;</span>
+    }
+    
+    protected void addPScore(int pScore) {
+<span class="fc" id="L37">        this.pScore.add(pScore);</span>
+<span class="fc" id="L38">        this.totalPScore += pScore;</span>
+<span class="fc" id="L39">    }</span>
+
+    public int getTotalPScore() {
+<span class="fc" id="L42">        return totalPScore;</span>
+    }
+    
+    protected void setLastMove(boolean lastMove) {
+<span class="fc" id="L46">        this.movesHistory.add(lastMove);</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (lastMove) histCoop++;</span>
+<span class="fc" id="L48">    }</span>
+    
+    public boolean getLastMove() {
+<span class="fc" id="L51">        return movesHistory.get(movesHistory.size()-1);</span>
+    }
+    
+    public boolean isLastNMovesFalse(int n) {
+<span class="fc" id="L55">        boolean result = false;</span>
+<span class="fc bfc" id="L56" title="All 4 branches covered.">        for (int i = movesHistory.size() - 1; i &gt;= 0 &amp;&amp; i &gt;= movesHistory.size() - n; i--) </span>
+<span class="pc bpc" id="L57" title="1 of 4 branches missed.">            if (result || movesHistory.get(i)) return false;</span>
+<span class="fc" id="L58">        return true;</span>
+    }    
+    
+    public boolean isLastNMovesTrue(int n) {
+<span class="fc" id="L62">        boolean result = true;</span>
+<span class="fc bfc" id="L63" title="All 4 branches covered.">        for (int i = movesHistory.size() - 1; i &gt;= 0 &amp;&amp; i &gt;= movesHistory.size() - n; i--) </span>
+<span class="pc bpc" id="L64" title="1 of 4 branches missed.">            if (!(result &amp;&amp; movesHistory.get(i))) return false;</span>
+<span class="fc" id="L65">        return true;</span>
+    }       
+    
+    public boolean getNpercentMoves(double n) {
+<span class="fc" id="L69">        double percent = ((double)histCoop/(movesHistory.size()));</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        return Double.compare(percent, n) &gt;= 0;</span>
+       
+    }
+    
+    protected IStrategy getStrategy() {
+<span class="fc" id="L75">        return strategy;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L80">        return &quot;Player{&quot; + &quot;strategy=&quot; + strategy + '}';</span>
+    }
+
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.2.201409121644</span></div></body></html>
