@@ -3,10 +3,8 @@ jdk:
 - oraclejdk8
 deploy:
   provider: releases
+  api_key:
+    secure: Y3pd+qNB9UrljbGB2RXLvArO/RHd3Vv+j+DqvP6GuWoKhZ7ur4pppCkgyvTo4DbgOaxP4ZCAmh99c2ulbFI+rcYVoDEdKz3wK6wgH8EtIs2tLAfMAwK2CD652Fu0+wFNtTC4PGClnl8hCfhbrxSU8Dj18RMXQFo8URXo3A3Fp8w=
   file: "/home/travis/build/nekanek/HH_Game_Theory/target/GameTheory-1.0.jar"
-  api-key:
-    secure: bnUx84j/L5STF8riYXomUR/+czfKQJBEvxRDOhgEYhSDfmi9eEHj3ewZ4ZSAzRxN0HFcashW12D+8uGgEMolwGFcCba+ylx+8KgpU+ADkgbjLzLfugMozwsYrLLusxsg471OIm7Qk
-  skip_cleanup: true
   on:
-    tags: true
-    all_branches: true
+    repo: nekanek/HH_Game_Theory
