@@ -1,6 +1,7 @@
-package strategies;
 
-import game.Player;
+package hh.strategies;
+
+import hh.game.Player;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;

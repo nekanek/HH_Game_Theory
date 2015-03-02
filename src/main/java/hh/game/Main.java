@@ -1,4 +1,4 @@
-package game;
+package hh.game;
 
 public class Main {    
 

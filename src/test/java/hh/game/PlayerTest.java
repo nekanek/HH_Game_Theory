@@ -1,8 +1,8 @@
 
-package game;
+package hh.game;
 
-import strategies.Cooperator;
-import strategies.IStrategy;
+import hh.strategies.Cooperator;
+import hh.strategies.IStrategy;
 import org.junit.After;
 import org.junit.Test;
 import static org.junit.Assert.*;

@@ -1,6 +1,7 @@
-package strategies;
 
-import game.Player;
+package hh.strategies;
+
+import hh.game.Player;
 import java.util.HashSet;
 import java.util.Set;
 

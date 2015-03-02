@@ -7,12 +7,19 @@
 *.war
 *.ear
 /dist/
+/target/
+/build/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-/build/
 
-nbproject/private/
+
+# report files
 report/*.zip
 .jacocoverage
-/target/
+
+
+
+# ide stuff
+nbactions.xml
+nbproject/

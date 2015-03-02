@@ -1,7 +1,7 @@
 
-package strategies;
+package hh.strategies;
 
-import game.Player;
+import hh.game.Player;
 
 
 public class Averager50 implements IStrategy {

@@ -1,8 +1,8 @@
-package game;
+package hh.game;
 
 import java.util.ArrayList;
 import java.util.List;
-import strategies.*;
+import hh.strategies.*;
 
 
 public class Team {

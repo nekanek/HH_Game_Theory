@@ -6,7 +6,7 @@
 
     <groupId>hh</groupId>
     <artifactId>GameTheory</artifactId>
-    <version>1.0</version>
+    <version>2.1</version>
     
     
 
@@ -32,7 +32,7 @@
                 <configuration>
                   <archive>
                     <manifest>
-                    <mainClass>game.Main</mainClass>
+                    <mainClass>hh.game.Main</mainClass>
                     </manifest>
                   </archive>
                 </configuration>

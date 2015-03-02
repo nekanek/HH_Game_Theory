@@ -1,6 +1,6 @@
-package game;
+package hh.game;
 
-import strategies.IStrategy;
+import hh.strategies.IStrategy;
 import java.util.ArrayList;
 import java.util.List;
 

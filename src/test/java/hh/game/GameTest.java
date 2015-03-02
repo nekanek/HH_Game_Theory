@@ -1,10 +1,9 @@
 
-package game;
+package hh.game;
 
-import strategies.Cooperator;
+import hh.strategies.Cooperator;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
