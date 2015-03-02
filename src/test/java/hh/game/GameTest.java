@@ -4,6 +4,7 @@ package game;
 import strategies.Cooperator;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -21,6 +22,18 @@ public class GameTest {
         Game myGame = new Game(team, true);
         myGame.play(); 
         assertTrue(myGame.gameScore() == 1000);
+    }
+    
+    @Test
+    public void testPlayersScore() {
+        List<Player> team = new ArrayList<>();
+        team.add(new Player(new Cooperator()));
+        team.add(new Player(new Cooperator()));
+        Game myGame = new Game(team, true);
+        myGame.play(); 
+        
+        assertTrue(myGame.playersScore().get("Cooperators") == 1000);
+        
     }
     
 }

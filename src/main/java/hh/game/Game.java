@@ -2,7 +2,11 @@ package game;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import strategies.Cooperator;
+import strategies.IStrategy.EStrategy;
 
 public class Game {
 
@@ -96,6 +100,11 @@ public class Game {
         System.out.println("Overall Game score: " + gameScore());
         System.out.println("Score history: ");
         System.out.println(scoreHistory.toString());
+        System.out.println("\nOverall game result per type of player:");
+        Map<String, Integer> scores = playersScore();
+        for (String name : scores.keySet()) {
+            System.out.println(name + " : " + scores.get(name));
+        }
     }
 
     private int currScore() {
@@ -109,4 +118,47 @@ public class Game {
         }
         return sumScore;
     }
+    
+    Map<String, Integer> playersScore() {
+        Map<String, Integer> scores = new HashMap<>(20);
+        scores.put("Anti TFTs", 0);
+        scores.put("Averagers 50", 0);
+        scores.put("Averagers 85", 0);
+        scores.put("Comparators", 0);
+        scores.put("Cooperators", 0);
+        scores.put("Defectors", 0);
+        scores.put("LessWorngers", 0);
+        scores.put("Guys with Long Memory", 0);
+        scores.put("Ignorant chaotic guys", 0);
+        scores.put("TFTs", 0);
+        scores.put("TFTs with 50% forgivness chance", 0);
+        
+        for (Player p : players) {
+            EStrategy strategy = p.getStrategy().whichStrategy();
+            switch (strategy) {
+                case ANTI_TFT: {scores.replace("Anti TFTs", scores.get("Anti TFTs") + 
+                                    p.getTotalPScore()); break;}
+                case AVG_50: {scores.replace("Averagers 50", scores.get("Averagers 50") + 
+                                    p.getTotalPScore()); break;}
+                case AVG_85: {scores.replace("Averagers 85", scores.get("Averagers 85") + 
+                                    p.getTotalPScore()); break;}
+                case COMP: {scores.replace("Comparators", scores.get("Comparators") + 
+                                    p.getTotalPScore()); break;}
+                case COOP: {scores.replace("Cooperators", scores.get("Cooperators") + 
+                                    p.getTotalPScore()); break;}
+                case DEF: {scores.replace("Defectors", scores.get("Defectors") + 
+                                    p.getTotalPScore()); break;}
+                case LESS: {scores.replace("LessWorngers", scores.get("LessWorngers") + 
+                                    p.getTotalPScore()); break;}
+                case LONG_MEM: {scores.replace("Guys with Long Memory", scores.get("Guys with Long Memory") + p.getTotalPScore()); break;}
+                case RAND: {scores.replace("Ignorant chaotic guys", scores.get("Ignorant chaotic guys") +                                    p.getTotalPScore()); break;}
+                case TFT: {scores.replace("TFTs", scores.get("TFTs") + p.getTotalPScore()); break;}
+                case TFT_FORG: {scores.replace("TFTs with 50% forgivness chance", scores.get("TFTs with 50% forgivness chance") + 
+                                    p.getTotalPScore()); break;}
+                default: throw new IllegalArgumentException("Unknown strategy");
+            }
+        }
+        return scores;
+    }
+    
 }
