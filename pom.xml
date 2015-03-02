@@ -6,7 +6,9 @@
 
     <groupId>hh</groupId>
     <artifactId>GameTheory</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
+    
+    
 
 
     <build>
@@ -21,22 +23,25 @@
                     <!--<encoding>UTF-8</encoding>-->
                 </configuration>
             </plugin>
+        
+        
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                  <archive>
+                    <manifest>
+                    <mainClass>game.Main</mainClass>
+                    </manifest>
+                  </archive>
+                </configuration>
+            </plugin>
+            
         </plugins>
     </build>
 
     <dependencies>
-<!-- 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>hamcrest-core</artifactId>
-                    <groupId>org.hamcrest</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency> -->
         
         <dependency>
             <groupId>junit</groupId>
@@ -45,36 +50,12 @@
             <scope>test</scope>
         </dependency>        
 
-<!--         <dependency>
-            <groupId>org.apache.maven.surefire</groupId>
-            <artifactId>surefire-junit</artifactId>
-            <version>2.6</version>
-        </dependency> -->
-
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>1.10.19</version>
-<!--             <exclusions>
-                <exclusion>
-                    <artifactId>hamcrest-core</artifactId>
-                    <groupId>org.hamcrest</groupId>
-                </exclusion>
-            </exclusions> -->
             <scope>test</scope>
         </dependency>
-
-<!--         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.10</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.1.2</version>
-        </dependency> -->
 
     </dependencies>
 
